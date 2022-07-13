@@ -31,10 +31,8 @@
                   <th>배송료</th>
               </tr>
           </thead>
-          <tbody>
-              <tr v-for="(item, idx) in productList" :key="idx">
-                 <ProductItem :item="item" />
-              </tr>
+          <tbody>              
+              <ProductItem :item="item" v-for="(item, idx) in productList" :key="idx" />              
           </tbody>
       </table>
   </div>

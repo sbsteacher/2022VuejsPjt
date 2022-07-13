@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import IntroduceView from '../views/IntroduceView.vue';
 import DataBindingList from '../views/DataBindingList.vue';
+import RenderingView from '../views/RenderingView.vue';
+import EventClick from '../views/EventClick';
 
 const routes = [
   {
@@ -26,6 +28,16 @@ const routes = [
     path: '/databindinglist',
     name: 'databindinglist',
     component: DataBindingList
+  },  
+  {
+    path: '/rendering',
+    name: 'rendering',
+    component: RenderingView
+  },  
+  {
+    path: '/eventclick',
+    name: 'eventclick',
+    component: EventClick
   }
 ]
 

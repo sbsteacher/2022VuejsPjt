@@ -1,8 +1,10 @@
-<template>    
-    <td>{{ item.product_name }}</td>
-    <td>{{ getPrice }}</td>
-    <td>{{ item.category }}</td>
-    <td>{{ getDeliveryPrice }}</td>
+<template>
+    <tr>
+        <td>{{ item.product_name }}</td>
+        <td>{{ getPrice }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ getDeliveryPrice }}</td>
+    </tr>
 </template>
 
 <script>
