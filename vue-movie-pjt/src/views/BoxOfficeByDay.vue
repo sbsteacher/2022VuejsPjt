@@ -4,7 +4,11 @@
 
 <script>
 export default {
-
+  methods: {
+    async getData() {
+      //const data = await this.$api('')
+    }
+  }
 }
 </script>
 
