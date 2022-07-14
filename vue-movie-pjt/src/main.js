@@ -6,4 +6,5 @@ import mixins from './mixins';
 createApp(App)
 .use(router)
 .mixin(mixins)
+
 .mount('#app')
