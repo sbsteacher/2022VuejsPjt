@@ -38,6 +38,8 @@ export default {
         getOnlyDateStr(date) {            
             return date.toISOString().split('T')[0];
         },
-        
+        getNumberWithComma(num) {
+            return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        }        
     }
 }

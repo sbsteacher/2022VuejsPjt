@@ -40,6 +40,7 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
-table { border: 1px solid rgb(70, 70, 70); border-collapse: collapse; }
+table { border: 1px solid rgb(70, 70, 70); border-collapse: collapse; margin: 1rem auto; }
 td, th { border: 1px solid rgb(70, 70, 70);  padding: 10px; }
+.align-right { text-align: right; }
 </style>
