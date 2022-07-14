@@ -5,5 +5,5 @@ import mixins from './mixins';
 
 createApp(App)
 .use(router)
-.use(mixins)
+.mixin(mixins)
 .mount('#app')

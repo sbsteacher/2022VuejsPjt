@@ -5,9 +5,13 @@
 <script>
 export default {
   methods: {
-    async getData() {
-      //const data = await this.$api('')
+    async getData() {      
+      const list = await this.getBoxOfficeByDay('20211212')
+      console.log(list);      
     }
+  },
+  created() {
+    this.getData();
   }
 }
 </script>
