@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>BoxOfficeByDay</h1>
+    <h1>{{ title }}</h1>
     <div>
       <input type="date" v-model="selectedDate">
       <button @click="search">검색</button>
@@ -26,14 +26,16 @@
       </tbody>
     </table>
   </div>
+
 </template>
 
 <script>
 export default {
-  data() {
+data() {
     return {
-      selectedDate: '',
-      list: []
+        title: '주간 박스오피스',
+        selectedDate: '',
+        list: []
     }
   },
   methods: {
@@ -42,8 +44,8 @@ export default {
       this.getData(targetDt);
     },
     async getData(targetDt) {      
-      const data = await this.getBoxOfficeByDay(targetDt)
-      this.list = data.boxOfficeResult.dailyBoxOfficeList;
+      const data = await this.getBoxOfficeByWeek(targetDt)
+      this.list = data.boxOfficeResult.weeklyBoxOfficeList;
     },
     
   },
@@ -55,6 +57,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
