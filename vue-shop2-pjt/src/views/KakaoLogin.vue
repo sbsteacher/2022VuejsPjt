@@ -25,12 +25,14 @@ export default {
                 url: '/v2/user/me',
                 success: res => {
                     const acc = res.kakao_account;
+                    console.log(acc);
                     const params = {
                         email: acc.email,
                         nm: acc.profile.nickname,
-                        main
+                        profile_img: acc.profile.profile_image_url,
+                        thumb_img: acc.profile.thumbnail_image_url
                     }
-                    
+                    console.log(params);
 
                     alert('로그인 성공!')
                 },
