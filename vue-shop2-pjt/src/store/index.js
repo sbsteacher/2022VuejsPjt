@@ -1,13 +1,12 @@
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
-
-const store = new Vuex.Store({
+export default new Vuex.Store({
   state: {
     iuser: 0
   },
   mutations: {
-    setState: (state, iuser) => {
+    setIuser: (state, iuser) => {
       state.iuser = iuser;
     }
   },
@@ -15,20 +14,3 @@ const store = new Vuex.Store({
     createPersistedState()
   ],
 });
-
-export default store;
-/*import { createStore } from 'vuex'
-
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
-*/

@@ -11,9 +11,9 @@
 
 <script>
 export default {
-    data() {
-        return {
-            iuser: this.$store.state.iuser,
+    computed: {
+        iuser() {
+            return this.$store.state.iuser;
         }
     },
     methods: {
@@ -42,7 +42,7 @@ export default {
                     console.log(params);
                     const data = await this.$api('/user/signup', params);                       
                     console.log(data.result);
-                    this.$store.commit('setState', data.result);                    
+                    this.$store.commit('setIuser', data.result);                    
                 },
                 fail: e => {
                     console.error(e);
