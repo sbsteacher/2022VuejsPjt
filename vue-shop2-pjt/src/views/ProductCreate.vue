@@ -152,6 +152,11 @@ export default {
     changeCate2() {
       this.selectedCateId = '';
     },
+    productInsert() {
+      if(this.product.product_name === '') {
+        return this.$swal('제품명은 필수 입력값입니다.');
+      }
+    },
   }
 }
 </script>
