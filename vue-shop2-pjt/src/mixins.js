@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default {
     methods: {
-        async $api(url, param) {
+        async $post(url, param) {
             return (await axios({
                 method: 'post',
                 url,
@@ -11,6 +11,15 @@ export default {
                 console.error(e);
             })).data;
         },
+
+        async $get(url, param) {
+            return (await axios.get(url, {
+                params: param
+            }).catch(e => {
+                console.error(e);
+            })).data;
+        },
+
         $base64(file) {
             return new Promise(resolve => {
                 const fr = new FileReader();
