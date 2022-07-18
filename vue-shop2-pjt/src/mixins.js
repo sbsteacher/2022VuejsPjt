@@ -2,11 +2,11 @@ import axios from 'axios';
 
 export default {
     methods: {
-        async $api(url, data) {
+        async $api(url, param) {
             return (await axios({
                 method: 'post',
                 url,
-                data
+                data: param
             }).catch(e => {
                 console.error(e);
             })).data;
