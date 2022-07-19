@@ -142,7 +142,9 @@ export default {
           value: item.cate3
         }
         this.categoryObj[cate1][cate2].push(obj);
-      });      
+      });
+      
+      console.log(this.categoryObj);
     },
     changeCate1() {
       this.cate2 = '';
@@ -183,10 +185,12 @@ export default {
         cancelButtonText: '취소'
       }).then(async result => {
         if(result.isConfirmed) {
-          const res = this.$post('/api/productInsert', this.product);
+          const res = await this.$post('/api/productInsert', this.product);
           console.log(res);
-          this.$swal.fire('저장되었습니다.', '', 'success');
-          this.$router.push( {path: '/sales'} );
+          if(res.result > 0) {
+            this.$swal.fire('저장되었습니다.', '', 'success');
+            this.$router.push( {path: '/sales'} );
+          }
         }
       });
       ;
