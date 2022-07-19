@@ -7,15 +7,15 @@ import ProductUpdate from '../views/ProductUpdate';
 import SalesList from '../views/SalesList';
 import ImageInsert from '../views/ImageInsert';
 import store from '@/store';
-import Swal from 'sweetalert2'
+import swal from 'sweetalert2';
 
 //네비게이션 가드
-const requireAuth = () => (to, from, next) => {     
-  if(store.state.user.iuser === undefined) {    
-    Swal.fire('로그인을 하세요.', '', 'warning');
-    return;  
-  }
-  return next();
+const requireAuth = () => (to, from, next) => {
+    if(store.state.user.iuser === undefined) {    
+      swal.fire('로그인을 하세요.', '', 'warning');
+      return;  
+    }
+    next();
 }
 
 const routes = [  
@@ -48,7 +48,8 @@ const routes = [
   {
     path: '/image_insert',
     name: 'ImageInsert',    
-    component: ImageInsert 
+    component: ImageInsert,
+    beforeEnter: requireAuth()
   }
 ];
 
