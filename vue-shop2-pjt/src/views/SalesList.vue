@@ -19,16 +19,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in productList" :key="product.id">
+          <tr v-for="(product, idx) in productList" :key="product.id">
             <td></td>
             <td>{{ product.product_name }}</td>
             <td>{{ product.product_price }}</td>
             <td>{{ product.delivery_price }}</td>
             <td>{{ product.add_delivery_price }}</td>
             <td>
+              <!--
               <router-link class="nav-link" :to="{ path: '/image_insert', query: {product_id: product.id} }">
                 <button type="button" class="btn btn-info me-1">사진등록</button>
               </router-link>
+              -->
+              <button type="button" class="btn btn-info me-1" @click="goToImageInsert(idx)">사진등록</button>
               <router-link class="nav-link" :to="{ path: '/update', query: {product_id: product.id} }">
                 <button type="button" class="btn btn-warning me-1">수정</button>
               </router-link>              
@@ -38,11 +41,7 @@
         </tbody>
       </table>
     </div>
-  </main>
-
-
-
-  
+  </main> 
 </template>
 
 <script>
@@ -56,6 +55,10 @@ export default {
     async getProductList() {
       this.productList = await this.$get('/api/productList2', {});
       console.log(this.productList);
+    },
+    goToImageInsert(idx) {
+      this.$store.commit('sallerSelectedProduct', this.productList[idx]);
+      this.$router.push( {path: '/image_insert'} );
     }
   },
   created() {
