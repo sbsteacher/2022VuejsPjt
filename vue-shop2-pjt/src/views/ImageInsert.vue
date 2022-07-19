@@ -99,11 +99,10 @@ export default {
   },
   methods: {
     async getProductDetail() {
-      const productDetail = await this.$get(
-        '/api/productDetail', 
-        { productId: this.productId }
+      this.productDetail = await this.$get(
+        `/api/productDetail/${this.productId}`, {}
       );
-      console.log(productDetail);
+      console.log(this.productDetail);
     }
   }
 }
