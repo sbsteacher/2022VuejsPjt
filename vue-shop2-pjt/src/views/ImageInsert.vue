@@ -96,6 +96,10 @@ export default {
     this.productDetail = this.$store.state.sallerSelectedProduct;
   },
   methods: {
+    async getProductImage() {
+      this.productImage = await this.$get(`/api/productImageList/${this.productDetail.id}`);
+      console.log(this.productImage);
+    },
     async uploadFile(files, type) {
       console.log(files);
       const image = await this.$base64(files[0]);
