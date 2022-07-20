@@ -23,7 +23,7 @@
                 v-for="item in productImage.filter( c => c.type === 1 )">
               <div class="position-relative">
                 <img :src="`/static/img/${item.product_id}/${item.type}/${item.path}`" class="img-fluid">
-                <div class="position-absolute top-0 end-0" style="cursor:pointer;" @click="deleteImage(item.id)">X</div>
+                <div class="position-absolute top-0 end-0" style="cursor:pointer;" @click="deleteImage(item)">X</div>
               </div>
             </div>
 
@@ -53,7 +53,7 @@
                 } )">
               <div class="position-relative">
                 <img :src="`/static/img/${item.product_id}/${item.type}/${item.path}`" class="img-fluid">
-                <div class="position-absolute top-0 end-0" style="cursor:pointer;" @click="deleteImage(item.id)">X</div>
+                <div class="position-absolute top-0 end-0" style="cursor:pointer;" @click="deleteImage(item)">X</div>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@
                 v-for="item in productImage.filter( c => c.type === 3 )">
               <div class="position-relative">
                 <img :src="`/static/img/${item.product_id}/${item.type}/${item.path}`" class="img-fluid">
-                <div class="position-absolute top-0 end-0" style="cursor:pointer;" @click="deleteImage(item.id)">X</div>
+                <div class="position-absolute top-0 end-0" style="cursor:pointer;" @click="deleteImage(item)">X</div>
               </div>
             </div>
           </div>
@@ -133,9 +133,10 @@ export default {
       const { error } = await this.$post(`/api/upload/${this.productDetail.id}/${type}`, formData);
       console.log(error);
     },
-    deleteImage(id) {
-      console.log(id);
-    }
+    async deleteImage({id, product_id, type, path}) {
+      const result = await this.$delete(`/api/productImageDelete/${id}/${product_id}/${type}/${path}`)
+      console.log(result);
+    } 
   }
 }
 </script>
