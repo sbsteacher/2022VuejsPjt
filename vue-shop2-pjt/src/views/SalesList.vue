@@ -40,7 +40,7 @@
               <router-link class="nav-link" :to="{ path: '/update', query: {product_id: product.id} }">
                 <button type="button" class="btn btn-warning me-1">수정</button>
               </router-link>              
-              <button type="button" class="btn btn-danger" @click="deleteProduct(product.id)">삭제</button>
+              <button type="button" class="btn btn-danger" @click="deleteProduct(product.id, idx)">삭제</button>
             </td>
           </tr>
         </tbody>
@@ -53,7 +53,10 @@
 export default {
   data() {
     return {
-      productList: []
+      productList: [],
+      cate1List: [],
+      cate2List: [],
+      cate3List: []
     }
   },
   methods: {
@@ -65,12 +68,16 @@ export default {
       this.$store.commit('sallerSelectedProduct', this.productList[idx]);
       this.$router.push( {path: '/image_insert'} );
     },
-    deleteProduct(productId) {
+    async deleteProduct(productId, idx) {
       console.log(productId);
-    },
+      const res = await this.$delete(`/api/deleteProduct/${productId}`, {});
+      if(res.result === 1) {
+        this.productList.splice(idx, 1);        
+      }
+    }
   },
-  created() {
-    this.getProductList();
+  created() {    
+    this.getProductList();    
   }
 }
 </script>
